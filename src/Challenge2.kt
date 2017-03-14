@@ -1,5 +1,7 @@
-import org.testng.Assert
-import org.testng.annotations.Test
+
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Test
 
 /**
  * Created by j.ostrander on 3/13/17.
@@ -10,7 +12,7 @@ class Challenge2 {
 
     @Test
     fun testXor() {
-        val result = toHexSring(xor(a, b))
-        Assert.assertEquals(result, "746865206b696420646f6e277420706c6179")
+        val result = xor(a.toHexByteArray(), b.toHexByteArray()).toHexSring()
+        assertTrue(result.equals("746865206b696420646f6e277420706c6179", ignoreCase = true))
     }
 }
