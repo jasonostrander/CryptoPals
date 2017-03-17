@@ -1,5 +1,4 @@
 
-import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
 
@@ -13,6 +12,7 @@ class Challenge2 {
     @Test
     fun testXor() {
         val result = xor(a.toHexByteArray(), b.toHexByteArray()).toHexSring()
+        println(String(result.toHexByteArray()))
         assertTrue(result.equals("746865206b696420646f6e277420706c6179", ignoreCase = true))
     }
 }

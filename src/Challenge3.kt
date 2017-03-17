@@ -1,3 +1,4 @@
+import org.junit.Assert
 import org.junit.Test
 
 /**
@@ -7,9 +8,13 @@ import org.junit.Test
 class Challenge3 {
     @Test
     fun singleByteXor() {
-        val input = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-        for (ch in "0123456789abcdef".toList()) {
-            println(String(xor(input.toHexByteArray(), (1..input.length).map { ch.toByte() }.toByteArray())))
-        }
+        val input = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736".toHexByteArray()
+        val result = (0..0x7f).map { "$it".repeat(input.size).toHexByteArray() }
+                .map { String(xor(input, it)) }
+                .map { Pair(it, characterFrequencyScore(it)) }
+                .sortedBy { it.second }
+                .first()
+        println(result.first)
+        Assert.assertEquals("Cooking MC's like a pound of bacon", result.first)
     }
 }
